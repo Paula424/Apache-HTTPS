@@ -281,6 +281,54 @@ Después de aceptar el aviso, apareció la ventana de autenticación. He introdu
 
 De esta forma he comprobado que el acceso mediante HTTPS funciona correctamente.
 
+###3.6. Redirección de HTTP a HTTPS
+
+Como mejora adicional, he configurado una redirección automática para que los usuarios que accedan mediante HTTP sean enviados a HTTPS.
+
+Para ello he abierto la configuración del sitio:
+
+```
+sudo nano /etc/apache2/sites-available/gci.conf
+```
+
+<img width="862" height="39" alt="Confighttps1" src="https://github.com/user-attachments/assets/ddd369e1-312a-4965-96c1-a912ef6400a4" />
+
+Y he añadido la siguiente línea debajo de ServerName:
+
+```
+Redirect permanent / https://192.168.21.229/
+```
+
+<img width="547" height="30" alt="Confighttps2" src="https://github.com/user-attachments/assets/5a6445da-146e-4729-8cd6-841964752b32" />
+
+Después he guardado los cambios y he comprobado la configuración:
+
+```
+sudo apache2ctl configtest
+```
+
+<img width="561" height="37" alt="Confighttps3" src="https://github.com/user-attachments/assets/b8a454ea-3ce2-49bb-a286-27ca0f6a49db" />
+<img width="603" height="78" alt="Confighttps4" src="https://github.com/user-attachments/assets/164aa8e8-d59d-4ae1-862b-31dfdb86f526" />
+
+Al obtener Syntax OK, he recargado Apache:
+
+```
+sudo systemctl reload apache2
+```
+
+<img width="568" height="38" alt="Confighttps5" src="https://github.com/user-attachments/assets/01809fda-a4a8-4404-b152-af5a9f186217" />
+
+Finalmente, he probado a entrar mediante:
+
+```
+http://192.168.21.229
+```
+
+<img width="469" height="46" alt="Confighttps6" src="https://github.com/user-attachments/assets/16474456-00df-4777-9869-29571d9c7219" />
+<img width="769" height="75" alt="Confighttps7" src="https://github.com/user-attachments/assets/ad9d4520-b1e1-4d75-990d-4d9c1d89e45e" />
+
+El navegador me ha redirigido automáticamente a la dirección HTTPS.
+
 
 
 
