@@ -46,7 +46,6 @@ Es un certificado emitido por una entidad de confianza, como Let's Encrypt. Los 
 Para realizar esta práctica hemos utilizado dos módulos:
 
 * **SSL:** permite configurar conexiones seguras mediante SSL/TLS.
-
 * **Headers:** permite gestionar las cabeceras HTTP del servidor.
 
 También hemos utilizado el puerto 443, que es el puerto habitual para las conexiones HTTPS.
@@ -330,7 +329,51 @@ http://192.168.21.229
 El navegador me ha redirigido automáticamente a la dirección HTTPS.
 
 
+## 4. Resultados obtenidos
+
+Después de realizar todos los pasos, he conseguido configurar correctamente HTTPS en mi servidor Apache2.
+
+Los resultados obtenidos han sido:
+
+* Apache funciona correctamente.
+* Los módulos SSL y Headers están habilitados.
+* Se ha creado un certificado autofirmado.
+* Se ha configurado un VirtualHost para utilizar el puerto 443.
+* La página web se puede visitar mediante HTTPS.
+* Se mantiene la autenticación mediante usuario y contraseña.
+* El acceso HTTP se redirige automáticamente a HTTPS.
+
+Por tanto, he conseguido que mi página web funcione mediante una conexión cifrada.
 
 
+## 5. Dificultades encontradas
+
+Durante la práctica he tenido algunos pequeños problemas al configurar Apache.
+
+Uno de ellos fue un error al escribir la ruta de los archivos del certificado, ya que escribí ect en lugar de etc. Esto provocaba que Apache no encontrara la clave privada.
+
+Después de corregir la ruta, volví a comprobar la configuración con apache2ctl configtest y conseguí que apareciera el mensaje Syntax OK.
+
+También apareció un aviso de seguridad en Firefox al acceder a HTTPS. Esto es normal porque he utilizado un certificado autofirmado y no uno emitido por una autoridad certificadora de confianza.
 
 
+## 6. Conclusión
+
+Con esta práctica he aprendido a configurar HTTPS en un servidor Apache2 utilizando Ubuntu.
+
+He podido conocer la importancia de proteger las comunicaciones entre el navegador y el servidor, crear un certificado autofirmado y configurar Apache para trabajar con conexiones seguras.
+
+También he aprendido a utilizar los módulos SSL y Headers, configurar un VirtualHost en el puerto 443 y realizar una redirección automática de HTTP a HTTPS.
+
+En general, la práctica me ha servido para entender mejor cómo funcionan las conexiones seguras en los servidores web y cómo se pueden implementar utilizando Apache.
+
+
+## 7. Bibliografía
+
+* Ubuntu. Tutorial oficial de instalación y configuración de Apache: https://ubuntu.com/tutorials/install-and-configure-apache
+
+* Apache HTTP Server. Documentación oficial del módulo SSL: https://httpd.apache.org/docs/2.4/mod/mod_ssl.html
+
+* Apache HTTP Server. Documentación oficial del módulo Headers: https://httpd.apache.org/docs/2.4/mod/mod_headers.html
+
+* OpenSSL. Documentación oficial: https://docs.openssl.org/
